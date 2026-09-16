@@ -2,7 +2,7 @@
 
 A practical portfolio project for junior and Level 1 IT support roles in Melbourne: build a small business IT environment, operate its service desk, and investigate realistic support requests.
 
-**Status: design complete; lab implementation has not started.** The owner has an Intel Lenovo with VirtualBox and an Apple Silicon Mac. Hardware details and storage estimates are user-reported, not remotely verified. No ticket, screenshot, test result or skill is claimed as completed.
+**Status: M0 host preflight complete; M1 has not started.** The Intel Lenovo and Apple Silicon Mac passed the documented resource, virtualisation, storage, subnet, and tooling checks. Lenovo results are owner-run and attributed as such; Mac results were observed locally. No project VM, support case, ticket, or skill is claimed as completed.
 
 ## Start here
 

@@ -3,7 +3,7 @@
   "design_version": "1.0",
   "design_date": "2026-09-16",
   "timezone": "Australia/Melbourne",
-  "implementation_state": "not_started",
+  "implementation_state": "m0_complete",
   "business": {
     "name": "Yarra Office Services",
     "fictional": true,
@@ -16,20 +16,25 @@
       "cpu": "Intel Core i5-1135G7",
       "ram_gb": 16,
       "os": "Windows 11 Home Single Language",
-      "reported_free_disk_gb_estimate": 166,
+      "reported_free_disk_gb_estimate": 181.6,
+      "preflight_free_disk_gb": 181.6,
       "min_free_disk_gb": 30,
       "hypervisor": "Oracle VirtualBox",
-      "last_reported_version": "7.0.20 r163906"
+      "last_reported_version": "7.2.16r174877",
+      "virtualisation_status": "enabled; Windows hypervisor detected",
+      "preflight_source": "owner-reported command and Task Manager results"
     },
     "mac": {
       "architecture": "arm64",
       "cpu": "Apple M3",
       "ram_gb": 16,
       "ssd_capacity_gb": 512,
-      "free_disk_gb": null,
+      "free_disk_gb": 75,
       "min_free_disk_gb": 30,
       "preflight_free_disk_target_gb": 60,
-      "hypervisor": "UTM direct free download"
+      "hypervisor": "UTM direct free download (not installed; deferred to M3)",
+      "os": "macOS 26.6.2 build 25G83",
+      "preflight_source": "locally observed read-only commands"
     }
   },
   "network": {
