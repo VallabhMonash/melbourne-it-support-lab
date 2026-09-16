@@ -8,8 +8,7 @@ A practical portfolio project for junior and Level 1 IT support roles in Melbour
 
 1. Read [project scope](docs/01-project-scope.md) and [architecture](docs/02-architecture.md).
 2. Follow the [implementation plan](docs/04-implementation-plan.md), starting at **M0**.
-3. Use [START-HERE.md](START-HERE.md) when handing the project to another assistant.
-4. Update [STATUS.md](STATUS.md) at the end of each work session.
+3. Update [STATUS.md](STATUS.md) at the end of each work session.
 
 ## What is being built
 
