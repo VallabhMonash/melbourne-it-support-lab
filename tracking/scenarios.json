@@ -1,0 +1,612 @@
+{
+  "schema_version": 1,
+  "scenarios": [
+    {
+      "id": "INC-01",
+      "title": "Locked-out employee account",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R11",
+        "R19"
+      ],
+      "mode": "hands_on",
+      "symptom": "An employee cannot sign in after repeated incorrect passwords.",
+      "setup": "Use a synthetic test account under the documented lockout policy; verify the recovery admin first.",
+      "diagnostics": "Check exact error, account lockout/enable state, affected scope and recent attempts; verify the fictional requester.",
+      "success": "Approved unlock/reset permits a fresh sign-in; explain why unlocking without investigating can lead to recurrence.",
+      "cleanup": "Restore the test account to its intended state; do not expose or reuse its password.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-02",
+      "title": "Wrong client DNS server",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R09",
+        "R10"
+      ],
+      "mode": "hands_on",
+      "symptom": "Internet IP access works but domain names or shares fail.",
+      "setup": "Record WS01 DNS, then set an incorrect test DNS address on WS01 only.",
+      "diagnostics": "Compare address/gateway, IP reachability, external versus internal resolution and domain discovery.",
+      "success": "Client uses DC01 DNS again; domain and external names resolve and the original share opens.",
+      "cleanup": "Restore DHCP-derived settings or the recorded baseline; verify no public secondary DNS.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-03",
+      "title": "Incorrect DHCP option",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R09",
+        "R10"
+      ],
+      "mode": "hands_on",
+      "symptom": "A renewed lease supplies the wrong DNS option.",
+      "setup": "Record the lab DHCP option, change only the test scope DNS option, then renew WS01.",
+      "diagnostics": "Inspect lease server, address/mask/router/DNS; distinguish a valid lease with bad options from no lease.",
+      "success": "Correct scope option and renewed lease restore domain resolution.",
+      "cleanup": "Restore original scope settings and verify that home network configuration was untouched.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-04",
+      "title": "Missing Finance access group",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R12",
+        "R11"
+      ],
+      "mode": "hands_on",
+      "symptom": "A Finance employee receives access denied.",
+      "setup": "Remove an approved synthetic test user's Finance group membership after recording it.",
+      "diagnostics": "Compare effective groups, share and NTFS permissions; verify authorisation and fresh token behaviour.",
+      "success": "Approved access works after a fresh sign-in; a Sales control account remains denied.",
+      "cleanup": "Restore the approved membership and log the access change without broad ACL changes.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-05",
+      "title": "GPO not applying to workstation",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R13"
+      ],
+      "mode": "hands_on",
+      "symptom": "Expected screen-lock or drive mapping settings are missing.",
+      "setup": "Move WS01 into a deliberately untargeted lab OU, recording its prior OU.",
+      "diagnostics": "Inspect OU/link/filter targeting and effective policy results; compare user versus computer settings.",
+      "success": "Return WS01 to intended scope and verify actual policy, not just a successful refresh command.",
+      "cleanup": "Restore OU membership and leave only the documented baseline GPOs active.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-06",
+      "title": "Windows printing service issue",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R07",
+        "R05"
+      ],
+      "mode": "hands_on",
+      "symptom": "A test print job cannot complete.",
+      "setup": "Use a synthetic PDF/available printer test; stop the print spooler only inside WS01 when appropriate.",
+      "diagnostics": "Inspect queue, selected printer, spooler state and document/application scope.",
+      "success": "Restart/recover the guest print subsystem and produce a verified test output.",
+      "cleanup": "Remove synthetic queued jobs; restore original guest service state; disclose whether no physical printer was used.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-07",
+      "title": "Application install fails",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R06"
+      ],
+      "mode": "hands_on",
+      "symptom": "A requested application does not install.",
+      "setup": "Use a safe incorrect package path or invalid deployment parameter; do not download malware or corrupt production apps.",
+      "diagnostics": "Inspect return code/log and package path, installer type, permissions and supported version.",
+      "success": "A corrected approved package installs and launches under the standard test user.",
+      "cleanup": "Remove only test package artefacts; preserve useful sanitised logs.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-08",
+      "title": "Application problem affects one user",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R05",
+        "R06"
+      ],
+      "mode": "hands_on",
+      "symptom": "An application works in one test profile but not another.",
+      "setup": "Use a disposable browser/app profile and a reversible setting that causes the symptom.",
+      "diagnostics": "Compare profiles, settings and errors; establish whether OS-wide reinstall is justified.",
+      "success": "Correct the specific setting/profile state and verify both affected and control profiles.",
+      "cleanup": "Restore/delete only the disposable profile after exporting synthetic files; do not delete real Windows profiles.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-09",
+      "title": "Low-space monitoring alert",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R18",
+        "R21"
+      ],
+      "mode": "hands_on",
+      "symptom": "Health output reports low free disk space.",
+      "setup": "Raise Test-LabHealth's warning threshold above current free space; never fill the SSD.",
+      "diagnostics": "Check measured values, threshold, guest versus host storage and whether the warning represents a real capacity problem.",
+      "success": "Explain simulated alert, create a ticket, restore threshold and capture healthy result.",
+      "cleanup": "Restore production-like lab threshold and verify Lenovo free-space floor.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-10",
+      "title": "Required test service stopped",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R05",
+        "R18"
+      ],
+      "mode": "hands_on",
+      "symptom": "A health check reports a stopped service.",
+      "setup": "Choose a harmless lab-only service or disposable test component; record its original state.",
+      "diagnostics": "Inspect service status/startup and relevant events; distinguish missing service, permission error and stopped state.",
+      "success": "Restore the test service and obtain healthy output; no automatic remediation needed.",
+      "cleanup": "Return service and monitoring configuration to baseline; never stop AD/security/host services for this case.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-11",
+      "title": "Patch or app-update failure",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R16",
+        "R06"
+      ],
+      "mode": "hands_on",
+      "symptom": "An approved test update reports failure or remains pending.",
+      "setup": "Use a reversible guest connectivity interruption or safe invalid app-update job; label which kind was used.",
+      "diagnostics": "Inspect status/error, connectivity, pending restart, applicability and actual installed version.",
+      "success": "Correct the cause and verify update/version/restart result on the endpoint.",
+      "cleanup": "Restore connectivity and schedules; no indefinite pause of Windows updates or protection.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-12",
+      "title": "Deleted file restoration",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R20",
+        "R12"
+      ],
+      "mode": "hands_on",
+      "symptom": "An employee deleted a required sample document.",
+      "setup": "Back up a tiny synthetic file and record its hash/ACL before deleting the source copy.",
+      "diagnostics": "Locate correct backup/version and distinguish missing file from denied access.",
+      "success": "Restore to a separate path first, compare content/hash and verify intended access before replacing the source.",
+      "cleanup": "Retain test evidence and remove redundant copies; document whether an independent-device copy was tested.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-13",
+      "title": "Single-user versus shared connectivity outage",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R02",
+        "R04",
+        "R09"
+      ],
+      "mode": "hands_on_with_simulated_reports",
+      "symptom": "A user says the internet is down.",
+      "setup": "Disconnect only WS01's virtual cable for one run; use an explicitly simulated multi-user report for the queue comparison.",
+      "diagnostics": "Inspect link/address/route/DNS/application in order and separate observed scope from reported scope.",
+      "success": "Reconnect and verify original task; explain how multi-user impact would change priority/escalation.",
+      "cleanup": "Reconnect the guest adapter and verify DNS/domain access; do not change the home router.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-14",
+      "title": "Managed endpoint offline",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R18"
+      ],
+      "mode": "hands_on",
+      "symptom": "The management console shows a stale/offline endpoint.",
+      "setup": "Record WS01 check-in then cleanly power it down.",
+      "diagnostics": "Check last-contact age, maintenance window and guest power before treating it as an outage.",
+      "success": "Power up and capture real renewed check-in; document observed reporting delay.",
+      "cleanup": "Restore running or intentionally scheduled-off state and close the alert appropriately.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-15",
+      "title": "Mac connectivity diagnosis",
+      "phase": "local",
+      "milestone": "M5",
+      "requirement_ids": [
+        "R08",
+        "R09"
+      ],
+      "mode": "hands_on",
+      "symptom": "A Mac application cannot reach an online resource.",
+      "setup": "During a suitable break, briefly disable Wi-Fi or use a disposable app's offline setting; record the original state.",
+      "diagnostics": "Check connection, address, gateway, DNS and another app/site; avoid changing router settings.",
+      "success": "Restore the original setting and verify the original task plus a control resource.",
+      "cleanup": "Restore personal Mac connectivity immediately; no lab MDM/network profiles installed.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-16",
+      "title": "Mac audio or application permission",
+      "phase": "local",
+      "milestone": "M5",
+      "requirement_ids": [
+        "R08",
+        "R03"
+      ],
+      "mode": "hands_on",
+      "symptom": "A meeting/test recording app has no microphone input.",
+      "setup": "Use a test app and reversible input selection or microphone permission change.",
+      "diagnostics": "Inspect selected input, input meter, application permission and another app as a control.",
+      "success": "Correct the selection/permission and verify a harmless test recording without publishing personal audio.",
+      "cleanup": "Restore preferred settings and delete unwanted private recordings.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-17",
+      "title": "Suspicious access or phishing report",
+      "phase": "local",
+      "milestone": "M5",
+      "requirement_ids": [
+        "R04",
+        "R19"
+      ],
+      "mode": "tabletop",
+      "symptom": "A fictional user reports a suspicious link or MFA prompt.",
+      "setup": "Create a text-only synthetic example; use no live malicious URL or actual phishing delivery.",
+      "diagnostics": "Ask what happened, preserve useful reported details, identify scope and prepare escalation without requesting a password.",
+      "success": "Complete an accurate handover and safe user guidance; label the entire case tabletop.",
+      "cleanup": "No live security controls or accounts changed; remove any misleading mock content from normal inboxes.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-18",
+      "title": "Mixed support queue and updates",
+      "phase": "local",
+      "milestone": "M3",
+      "requirement_ids": [
+        "R01",
+        "R02",
+        "R03"
+      ],
+      "mode": "hands_on_with_simulated_reports",
+      "symptom": "Several requests arrive with different impact and urgency.",
+      "setup": "Create three synthetic GLPI tickets with different scopes, workarounds and requested dates.",
+      "diagnostics": "Justify ordering, assign owners, record response times and separate internal notes from user updates.",
+      "success": "Resolve/reopen a test ticket, link an asset/KB and explain a prioritisation decision.",
+      "cleanup": "Close or clearly label remaining practice tickets; report timings as simulated practice metrics.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-01",
+      "title": "New employee onboarding",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R01",
+        "R11",
+        "R19",
+        "R21"
+      ],
+      "mode": "hands_on",
+      "symptom": "A new Finance employee needs access and a configured workstation.",
+      "setup": "Use an approved fictional request and an extra test identity; baseline staff remain unchanged.",
+      "diagnostics": "Check role approval, naming, groups, device needs, standard-user privileges and credential delivery procedure.",
+      "success": "User signs in and reaches intended resources; unrelated department access is denied; script batch variant verified separately.",
+      "cleanup": "Disable/remove only disposable users when finished after recording IDs; retain no passwords in ticket.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-02",
+      "title": "Department transfer",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R11",
+        "R12"
+      ],
+      "mode": "hands_on",
+      "symptom": "An employee moves from Sales to Operations.",
+      "setup": "Record the test user's approved old/new access.",
+      "diagnostics": "Check group memberships and resource access, including inherited membership and fresh logon token.",
+      "success": "New department access works and old access no longer works after refresh/sign-in.",
+      "cleanup": "Restore baseline department if the fixture is reused; record change history.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-03",
+      "title": "Employee offboarding",
+      "phase": "local",
+      "milestone": "M2",
+      "requirement_ids": [
+        "R11",
+        "R19"
+      ],
+      "mode": "hands_on",
+      "symptom": "A fictional employee leaves the organisation.",
+      "setup": "Use a disposable account with synthetic data and a recorded approved request.",
+      "diagnostics": "Check disablement, active sessions, access removal and data-retention needs; distinguish new authentication from existing sessions.",
+      "success": "Fresh access is prevented and lab sessions handled; synthetic data preserved according to the request.",
+      "cleanup": "Keep account disabled or remove it only after review; do not delete baseline staff or real data.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-04",
+      "title": "Workstation refresh",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R14",
+        "R15",
+        "R20"
+      ],
+      "mode": "hands_on",
+      "symptom": "The employee workstation needs a documented rebuild/reprovision.",
+      "setup": "Complete dependent local cases, back up test files, inventory apps and record recovery credentials before rebuilding the guest.",
+      "diagnostics": "Follow a deployment checklist and verify package/configuration choices; plan storage without a permanent duplicate VM.",
+      "success": "Rebuilt/reprovisioned client rejoins domain, restores test data, runs required apps and has updated asset record.",
+      "cleanup": "Reconcile old/new device records and remove obsolete agent registrations; disclose that image capture is not included.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-05",
+      "title": "Remote support session",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R03",
+        "R17"
+      ],
+      "mode": "hands_on_with_simulated_reports",
+      "symptom": "A simulated remote employee needs help with an application setting.",
+      "setup": "Use the endpoint tool's supported session to WS01 and record simulated consent.",
+      "diagnostics": "Verify target identity, communicate intended action and observe the symptom before changing it.",
+      "success": "Resolve and verify the task; record session start/end and end access cleanly.",
+      "cleanup": "Close the session and restore any temporary setting; personal hosts were not targeted.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-06",
+      "title": "Approved software deployment",
+      "phase": "local",
+      "milestone": "M4",
+      "requirement_ids": [
+        "R06",
+        "R15",
+        "R21"
+      ],
+      "mode": "hands_on",
+      "symptom": "An employee requests a small approved free application.",
+      "setup": "Use a vendor-sourced package and target only WS01.",
+      "diagnostics": "Check approval, architecture, install parameters and detection method; capture pre-install inventory.",
+      "success": "Tool reports deployment and actual client version/launch verifies it; inventory difference captured.",
+      "cleanup": "Document uninstall/rollback and remove extra package copies if storage requires.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-19",
+      "title": "Shared mailbox permission issue",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R23"
+      ],
+      "mode": "hands_on",
+      "symptom": "A test user can see a mailbox but cannot send as it, or cannot open it.",
+      "setup": "Use two licensed synthetic users and a test shared mailbox; change one intended permission.",
+      "diagnostics": "Inspect access versus Send As/delegation separately and allow recorded propagation time; check web client as control.",
+      "success": "Authorised user can perform requested action; unapproved user cannot.",
+      "cleanup": "Restore intended delegation and clean up synthetic messages/objects during trial teardown.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-20",
+      "title": "OneDrive account or sync issue",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R24"
+      ],
+      "mode": "hands_on",
+      "symptom": "A sample file is missing locally or not synchronising.",
+      "setup": "Use synthetic files and pause sync or select a deliberately different test folder/account context.",
+      "diagnostics": "Compare web and desktop state, correct account, sync status and specific error before resetting anything.",
+      "success": "Correct state results in the intended file appearing/syncing and a verified edit.",
+      "cleanup": "Restore normal test sync; preserve needed evidence before removing test account.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-21",
+      "title": "SharePoint access denied",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R24"
+      ],
+      "mode": "hands_on",
+      "symptom": "A test employee cannot open a document library.",
+      "setup": "Remove only a test group's expected access on the test site/library.",
+      "diagnostics": "Inspect account, group/site/library permissions and broken inheritance where relevant; check approved access.",
+      "success": "Expected user can access, a control user remains denied and no public sharing was needed.",
+      "cleanup": "Restore the intended access matrix and remove temporary sharing links.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-22",
+      "title": "Cloud sign-in or MFA support",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R22",
+        "R19"
+      ],
+      "mode": "hands_on",
+      "symptom": "A test user reports a sign-in/MFA problem.",
+      "setup": "Use a safe wrong-account or unregistered test MFA-method scenario with separate working admin access.",
+      "diagnostics": "Inspect exact error, account/licence/role, available sign-in evidence and allowed recovery path.",
+      "success": "Restore intended user sign-in with MFA where applicable and document verification without secrets.",
+      "cleanup": "Remove temporary test methods securely; never remove the only administrator's recovery access.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "INC-23",
+      "title": "Intune assignment or compliance issue",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R26",
+        "R18"
+      ],
+      "mode": "hands_on",
+      "symptom": "CLD01 does not receive an expected setting/app or reports a compliance issue.",
+      "setup": "Use an intentionally incorrect test-group assignment or one supported reversible compliance setting.",
+      "diagnostics": "Check licence, Entra/MDM state, group assignment, last check-in, supported setting and device-side evidence.",
+      "success": "Correct targeted assignment/state, sync and verify device behaviour plus report update; record latency.",
+      "cleanup": "Restore intended policy and remove duplicate/stale records through documented teardown.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-07",
+      "title": "Microsoft 365 user lifecycle",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R22",
+        "R19"
+      ],
+      "mode": "hands_on",
+      "symptom": "A new employee needs cloud services, then a mover/leaver change.",
+      "setup": "Use two or three licensed synthetic users and a fictional approved request.",
+      "diagnostics": "Check available licences, groups, intended services, least privilege and data ownership.",
+      "success": "User accesses licensed services; later block/revoke/remove access appropriately and verify new access denied.",
+      "cleanup": "Preserve test evidence/data as planned, recover licences and document actual remaining objects.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-08",
+      "title": "Enrol and configure CLD01",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R26"
+      ],
+      "mode": "hands_on",
+      "symptom": "A test endpoint must be managed through Intune.",
+      "setup": "Finish local phase, verify recovery admin, repurpose WS01 and follow cloud transition runbook.",
+      "diagnostics": "Check correct join flow, supported edition, licence/enrolment scope and device identity; distinguish registration from join.",
+      "success": "Entra join plus Intune record verified, one app and safe setting reach CLD01, and compliance status is explained.",
+      "cleanup": "Retire management before trial expiry; verify local access and stale-object cleanup.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    },
+    {
+      "id": "REQ-09",
+      "title": "Teams membership and user support",
+      "phase": "cloud",
+      "milestone": "M6",
+      "requirement_ids": [
+        "R25",
+        "R03"
+      ],
+      "mode": "hands_on",
+      "symptom": "A user needs access to the test team's channel/files.",
+      "setup": "Verify a Teams-capable licence, create a tiny test team and use a second test account.",
+      "diagnostics": "Check account/tenant, membership and web versus desktop behaviour; no personal Teams substitution.",
+      "success": "Intended user can access the team/channel and a synthetic collaboration action works.",
+      "cleanup": "Remove test content/membership during teardown and record any licence limitation.",
+      "status": "not_started",
+      "evidence": [],
+      "notes": ""
+    }
+  ]
+}

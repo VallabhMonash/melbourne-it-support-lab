@@ -1,0 +1,48 @@
+# Private work and secrets
+.local/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.p12
+*.kdbx
+*recovery-code*
+
+# VM disks, snapshots, installers and backups
+*.iso
+*.vdi
+*.vhd
+*.vhdx
+*.vmdk
+*.qcow2
+*.ova
+*.ovf
+*.sav
+*.utm/
+*.exe
+*.msi
+*.dmg
+*.pkg
+*.zip
+*.7z
+*.tar
+*.gz
+*.bak
+*.sql
+*.evtx
+
+# Raw logs and recordings: publish reviewed summaries/links instead
+*.log
+*.mp4
+*.mov
+*.webm
+
+# Runtime/editor files
+.DS_Store
+Thumbs.db
+__pycache__/
+*.pyc
+.venv/
+node_modules/

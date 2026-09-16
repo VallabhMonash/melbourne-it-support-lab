@@ -1,0 +1,124 @@
+{
+  "project": "melbourne-it-support-lab",
+  "design_version": "1.0",
+  "design_date": "2026-09-16",
+  "timezone": "Australia/Melbourne",
+  "implementation_state": "not_started",
+  "business": {
+    "name": "Yarra Office Services",
+    "fictional": true,
+    "scenario_headcount": 20,
+    "active_staff_accounts": 6
+  },
+  "hosts": {
+    "lenovo": {
+      "architecture": "x64",
+      "cpu": "Intel Core i5-1135G7",
+      "ram_gb": 16,
+      "os": "Windows 11 Home Single Language",
+      "reported_free_disk_gb_estimate": 166,
+      "min_free_disk_gb": 30,
+      "hypervisor": "Oracle VirtualBox",
+      "last_reported_version": "7.0.20 r163906"
+    },
+    "mac": {
+      "architecture": "arm64",
+      "cpu": "Apple M3",
+      "ram_gb": 16,
+      "ssd_capacity_gb": 512,
+      "free_disk_gb": null,
+      "min_free_disk_gb": 30,
+      "preflight_free_disk_target_gb": 60,
+      "hypervisor": "UTM direct free download"
+    }
+  },
+  "network": {
+    "name": "ITSUPPORT-LAB",
+    "mode": "natnetwork",
+    "cidr": "10.77.0.0/24",
+    "expected_gateway": "10.77.0.1",
+    "virtualbox_dhcp": false,
+    "domain": "corp.yarra.example",
+    "netbios": "YARRA",
+    "dc_ip": "10.77.0.10",
+    "client_bootstrap_ip": "10.77.0.20",
+    "dhcp_start": "10.77.0.100",
+    "dhcp_end": "10.77.0.149",
+    "domain_client_dns": [
+      "10.77.0.10"
+    ],
+    "dns_forwarder_candidate": "1.1.1.1",
+    "bridged": false,
+    "inbound_port_forwarding": false
+  },
+  "vms": [
+    {
+      "name": "DC01",
+      "host": "lenovo",
+      "architecture": "x64",
+      "os": "Windows Server 2025 Standard Evaluation Desktop Experience",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_max_gb": 60,
+      "disk_allocation": "dynamic",
+      "network": "ITSUPPORT-LAB"
+    },
+    {
+      "name": "WS01",
+      "host": "lenovo",
+      "architecture": "x64",
+      "os": "Windows 11 Enterprise Evaluation (standard channel)",
+      "vcpu": 2,
+      "ram_gb": 4,
+      "disk_max_gb": 80,
+      "disk_allocation": "dynamic",
+      "network": "ITSUPPORT-LAB",
+      "later_name": "CLD01",
+      "later_network": "ordinary NAT; automatic IP/DNS",
+      "cloud_is_additional_vm": false
+    },
+    {
+      "name": "HELP01",
+      "host": "mac",
+      "architecture": "arm64",
+      "os": "Ubuntu Server 24.04 LTS ARM64",
+      "vcpu": 2,
+      "ram_gb": 2,
+      "disk_max_gb": 24,
+      "disk_allocation": "dynamic",
+      "network": "UTM Shared Network",
+      "stack": [
+        "GLPI 11.x supported patch",
+        "Apache",
+        "PHP 8.3",
+        "MariaDB 10.11"
+      ]
+    }
+  ],
+  "platforms": {
+    "ticketing": "GLPI self-hosted on HELP01",
+    "endpoint": "Endpoint Central Cloud Free, eligibility/features verified at M4",
+    "cloud": "Microsoft 365 Business Premium trial, activated at M6",
+    "identity_sync": false,
+    "google_workspace": "optional extension",
+    "apple_mdm": "optional extension"
+  },
+  "targets": {
+    "core_requirements": 26,
+    "local_requirements": 21,
+    "cloud_requirements": 5,
+    "local_scenarios": 24,
+    "cloud_scenarios": 8,
+    "total_scenarios": 32,
+    "knowledge_articles": 8,
+    "runbooks": 6,
+    "scripts": 3,
+    "case_studies": 6,
+    "demos": 3
+  },
+  "budget": {
+    "additional_spend_target_aud": 0,
+    "paid_subscription_authorised": false,
+    "cloud_trial_active": false
+  }
+}

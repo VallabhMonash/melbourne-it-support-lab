@@ -1,0 +1,517 @@
+{
+  "schema_version": 1,
+  "scope": "fixed_v1_core",
+  "requirements": [
+    {
+      "id": "R01",
+      "skill": "Ticket lifecycle, accurate notes and knowledge documentation",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-18",
+        "REQ-01"
+      ],
+      "acceptance": "Create, classify, assign, update, resolve and reopen a GLPI ticket; link an asset and useful KB article.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R02",
+      "skill": "Impact-based prioritisation and response tracking",
+      "phase": "local",
+      "ad_sources": [
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-13",
+        "INC-18"
+      ],
+      "acceptance": "Prioritise a mixed queue with business reasons and separate practice-time targets from actual timestamps.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R03",
+      "skill": "Customer communication and user guidance",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-18",
+        "REQ-05"
+      ],
+      "acceptance": "Write acknowledgement, progress and closure updates and guide a simulated user through a verified task.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R04",
+      "skill": "Escalation and vendor/senior handover",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-13",
+        "INC-17"
+      ],
+      "acceptance": "Prepare an evidence-based escalation with impact, timeline, checks, changes, workaround and next action.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R05",
+      "skill": "Windows OS and user-context troubleshooting",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A3",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-08",
+        "INC-10"
+      ],
+      "acceptance": "Use relevant Windows diagnostics and a control account to isolate a service or user-specific issue.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R06",
+      "skill": "Application installation and software diagnosis",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-07",
+        "REQ-06"
+      ],
+      "acceptance": "Investigate a failed install and verify a correctly deployed application for a standard user.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R07",
+      "skill": "Printing and peripheral fundamentals",
+      "phase": "local",
+      "ad_sources": [
+        "A2",
+        "A4",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-06"
+      ],
+      "acceptance": "Restore the lab print subsystem and test output; disclose PDF/virtual versus physical printer limits.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R08",
+      "skill": "Basic macOS support",
+      "phase": "local",
+      "ad_sources": [
+        "A2",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-15",
+        "INC-16"
+      ],
+      "acceptance": "Diagnose Mac connectivity and app/audio permission issues using reversible user-level actions.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R09",
+      "skill": "IP, gateway and connectivity diagnosis",
+      "phase": "local",
+      "ad_sources": [
+        "A2",
+        "A3",
+        "A4",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-13",
+        "INC-15"
+      ],
+      "acceptance": "Separate endpoint, addressing, route and application failures using relevant observations.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R10",
+      "skill": "DNS and DHCP support",
+      "phase": "local",
+      "ad_sources": [
+        "A2",
+        "A3",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-02",
+        "INC-03"
+      ],
+      "acceptance": "Verify lease/options and name resolution; correct lab DNS/DHCP faults without changing the home network.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R11",
+      "skill": "AD account lifecycle and sign-in support",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-01",
+        "REQ-01",
+        "REQ-02",
+        "REQ-03"
+      ],
+      "acceptance": "Create/move/disable test users and recover a lockout while checking identity and access authorisation.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R12",
+      "skill": "Groups and file permissions",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-04",
+        "REQ-02"
+      ],
+      "acceptance": "Use group-based access and prove both permitted and denied access after a change.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R13",
+      "skill": "Group Policy and workstation configuration",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2"
+      ],
+      "scenario_ids": [
+        "INC-05"
+      ],
+      "acceptance": "Find a targeting problem and verify effective policy on the test workstation.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R14",
+      "skill": "Device provisioning and refresh",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-04"
+      ],
+      "acceptance": "Follow a build/refresh checklist, preserve synthetic data and validate the rebuilt/reprovisioned client.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R15",
+      "skill": "Asset and installed-software inventory",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-04",
+        "REQ-06"
+      ],
+      "acceptance": "Reconcile actual client inventory with the service-desk asset record and record lifecycle changes.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R16",
+      "skill": "Patch and endpoint protection checks",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-11"
+      ],
+      "acceptance": "Inspect update/security health, diagnose a controlled failure and verify the subsequent result.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R17",
+      "skill": "Remote support workflow",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-05"
+      ],
+      "acceptance": "Record simulated consent, reach the intended test VM remotely, resolve a task and end the session.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R18",
+      "skill": "Monitoring and alert response",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-09",
+        "INC-10",
+        "INC-14"
+      ],
+      "acceptance": "Generate a safe fault, capture its alert/check, open a ticket and verify return to healthy.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R19",
+      "skill": "Security, credential handling and least privilege",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-17",
+        "REQ-01",
+        "REQ-03"
+      ],
+      "acceptance": "Handle synthetic identity verification/credential references and a phishing escalation without exposing secrets.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R20",
+      "skill": "Backup and verified file restoration",
+      "phase": "local",
+      "ad_sources": [
+        "A1",
+        "A2"
+      ],
+      "scenario_ids": [
+        "INC-12",
+        "REQ-04"
+      ],
+      "acceptance": "Recover a deleted file and check content/access; explain independent backup versus same-disk copy/snapshot.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R21",
+      "skill": "PowerShell support automation",
+      "phase": "local",
+      "ad_sources": [
+        "A1"
+      ],
+      "scenario_ids": [
+        "REQ-01",
+        "INC-09",
+        "REQ-06"
+      ],
+      "acceptance": "Implement and verify the three bounded script contracts, including failure/WhatIf/repeat behaviour.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R22",
+      "skill": "Cloud identity, licensing and MFA support",
+      "phase": "cloud",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-07",
+        "INC-22"
+      ],
+      "acceptance": "Administer licensed synthetic users and safely investigate sign-in/MFA with separate recovery admin access.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R23",
+      "skill": "Exchange Online and shared mailbox support",
+      "phase": "cloud",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-19"
+      ],
+      "acceptance": "Verify distinct mailbox access/send permissions with test users and demonstrate actual behaviour.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R24",
+      "skill": "OneDrive and SharePoint support",
+      "phase": "cloud",
+      "ad_sources": [
+        "A1",
+        "A2",
+        "A4",
+        "A6"
+      ],
+      "scenario_ids": [
+        "INC-20",
+        "INC-21"
+      ],
+      "acceptance": "Diagnose sync/account context and sharing/access, verify recovery and retain a negative permission test.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R25",
+      "skill": "Teams user support",
+      "phase": "cloud",
+      "ad_sources": [
+        "A1",
+        "A3",
+        "A5",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-09"
+      ],
+      "acceptance": "Verify test-team membership and user access and explain app/account troubleshooting under the actual licence.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    },
+    {
+      "id": "R26",
+      "skill": "Intune enrolment, configuration and compliance",
+      "phase": "cloud",
+      "ad_sources": [
+        "A1",
+        "A6"
+      ],
+      "scenario_ids": [
+        "REQ-08",
+        "INC-23"
+      ],
+      "acceptance": "Prove Entra join plus MDM enrolment; diagnose one targeted assignment/compliance issue on CLD01.",
+      "status": "not_started",
+      "evidence": [],
+      "independent_repeat": "",
+      "notes": ""
+    }
+  ]
+}
